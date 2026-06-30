@@ -17,12 +17,10 @@ const buttons = [
 function App() {
   return (
     <>
-    <Header />
     <RoutesWrapper />
       {/* {buttons.map((el: any) => (
         <Button bgColor={el.bgColor} buttonText={el.buttonText} />
       ))} */}
-    <Footer/>
     </>
   )
 }

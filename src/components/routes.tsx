@@ -2,21 +2,38 @@ import React from 'react'
 import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router'
 import Home from '../modules/home'
 import About from '../modules/about'
+import Blogs from '../modules/blog'
+import BlogDetails from '../modules/blog/blogDetails'
+import Layout from './layout'
 
-// const router = createBrowserRouter([
-//   {    path: "/",    element: <Home/>  },
-//   {    path: "/about",    element: <About/>  },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+     element: <Layout />,
+     children: [
+      { path: "/about", element: <About /> },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+        // children: [
+        // ]
+      },
+      { path: "/blog-details/:id", element: <BlogDetails /> },
+
+    ]
+  },
+]);
 
 export default function RoutesWrapper() {
   return (
-    //  <RouterProvider router={router} />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-
-    </Routes>
-
-
+    <RouterProvider router={router} />
+    // <Routes>
+    //   <Route path="/" element={<Layout />} >
+    //     <Route path="/about" element={<About />} />
+    //     <Route path="/blogs" element={<Blogs />} >
+    //       <Route path="blog-details" element={<BlogDetails />} />
+    //     </Route>
+    //   </Route>
+    // </Routes>
   )
 }
