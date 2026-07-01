@@ -1,10 +1,8 @@
 import React from 'react'
 
 function Button(props) {
-  console.log(props);
-  
   return (
-    <button style={{ backgroundColor: props.bgColor }}>
+    <button style={{ backgroundColor: props.bgColor }} onClick={props.buttonClick}>
       {props.buttonText || 'Click me'}
     </button>
   )

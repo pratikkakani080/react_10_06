@@ -5,6 +5,7 @@ import About from '../modules/about'
 import Blogs from '../modules/blog'
 import BlogDetails from '../modules/blog/blogDetails'
 import Layout from './layout'
+import Login from '../modules/login'
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
      element: <Layout />,
      children: [
       { path: "/about", element: <About /> },
+      { path: "/login", element: <Login /> },
       {
         path: "/blogs",
         element: <Blogs />,
