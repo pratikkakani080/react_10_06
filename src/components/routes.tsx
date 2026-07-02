@@ -6,6 +6,7 @@ import Blogs from '../modules/blog'
 import BlogDetails from '../modules/blog/blogDetails'
 import Layout from './layout'
 import Login from '../modules/login'
+import SignIn from '../modules/signin'
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
      children: [
       { path: "/about", element: <About /> },
       { path: "/login", element: <Login /> },
+      { path: "/signin", element: <SignIn /> },
       {
         path: "/blogs",
         element: <Blogs />,
