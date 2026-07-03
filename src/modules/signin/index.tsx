@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { storeItem } from "../../utils/storage";
+import { toast } from "react-toastify";
 
 interface user {
   uname: string;
@@ -17,15 +18,24 @@ export default function SignIn() {
   const handleChange = (e: any) => {
     const { name, checked, type, value } = e.target;
 
-    setUserInfo({
-      ...userInfo,
+    setUserInfo((prev) => ({
+      ...prev,
       [name]: type === "checkbox" ? checked : value,
-    });
+    }));
+
+    // setUserInfo({
+    //   ...userInfo,
+    //   [name]: type === "checkbox" ? checked : value,
+    // });
   };
 
   const handleSubmit = () => {
-    storeItem('userInfo', userInfo)
-  }
+    if (userInfo.uname && userInfo.password) {
+      storeItem("userInfo", userInfo);
+    } else {
+      toast.error('please enter mandatory fields')
+    }
+  };
 
   return (
     <>
@@ -52,7 +62,9 @@ export default function SignIn() {
           onChange={handleChange}
         ></input>
         <br />
-        <button type="submit" onClick={handleSubmit}>Login</button>
+        <button type="submit" onClick={handleSubmit}>
+          Login
+        </button>
         <br />
         <label>
           <input

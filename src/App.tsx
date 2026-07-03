@@ -1,3 +1,4 @@
+import { ToastContainer } from 'react-toastify'
 import './App.css'
 import Button from './components/button'
 import Footer from './components/footer'
@@ -18,6 +19,10 @@ function App() {
   return (
     <>
     <RoutesWrapper />
+     <ToastContainer position="top-center"
+     theme="colored"
+
+ />
       {/* {buttons.map((el: any) => (
         <Button bgColor={el.bgColor} buttonText={el.buttonText} />
       ))} */}
