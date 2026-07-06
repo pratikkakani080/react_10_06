@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { storeItem } from "../../utils/storage";
 import { toast } from "react-toastify";
 
@@ -15,8 +15,21 @@ export default function SignIn() {
     rememberMe: false,
   });
 
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    console.log('calling on mount');
+    
+    return () => {
+      console.log('calling at the time of unmounting');
+      
+    }
+  }, [errors])
+
   const handleChange = (e: any) => {
     const { name, checked, type, value } = e.target;
+
+    // setErrors({ ...errors, [name]: false });
 
     setUserInfo((prev) => ({
       ...prev,
@@ -29,11 +42,24 @@ export default function SignIn() {
     // });
   };
 
+  const validate = () => {
+    let isFormValid = true;
+    let errs = {};
+    if (!userInfo.uname) {
+      isFormValid = false;
+      errs.uname = true;
+    }
+    if (!userInfo.password) {
+      isFormValid = false;
+      errs.password = true;
+    }
+    setErrors(errs);
+    return isFormValid;
+  };
+
   const handleSubmit = () => {
-    if (userInfo.uname && userInfo.password) {
+    if (validate()) {
       storeItem("userInfo", userInfo);
-    } else {
-      toast.error('please enter mandatory fields')
     }
   };
 
@@ -50,6 +76,9 @@ export default function SignIn() {
           required
           onChange={handleChange}
         ></input>
+        {errors.uname && (
+          <span style={{ color: "red" }}>* this field is mandatory</span>
+        )}
         <br />
         <label htmlFor="psw">
           <b>Password</b>
@@ -61,6 +90,9 @@ export default function SignIn() {
           required
           onChange={handleChange}
         ></input>
+        {errors.password && (
+          <span style={{ color: "red" }}>* this field is mandatory</span>
+        )}
         <br />
         <button type="submit" onClick={handleSubmit}>
           Login
