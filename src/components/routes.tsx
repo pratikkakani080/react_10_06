@@ -1,21 +1,30 @@
-import React from 'react'
-import { createBrowserRouter, Route, RouterProvider, Routes } from 'react-router'
-import Home from '../modules/home'
-import About from '../modules/about'
-import Blogs from '../modules/blog'
-import BlogDetails from '../modules/blog/blogDetails'
-import Layout from './layout'
-import Login from '../modules/login'
-import SignIn from '../modules/signin'
+import React from "react";
+import {
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router";
+import Home from "../modules/home";
+import About from "../modules/about";
+import Blogs from "../modules/blog";
+import BlogDetails from "../modules/blog/blogDetails";
+import Layout from "./layout";
+import Login from "../modules/login";
+import SignIn from "../modules/signin";
+import SignUp from "../modules/signup";
+import Users from "../modules/users";
 
 const router = createBrowserRouter([
   {
     path: "/",
-     element: <Layout />,
-     children: [
+    element: <Layout />,
+    children: [
       { path: "/about", element: <About /> },
       { path: "/login", element: <Login /> },
       { path: "/signin", element: <SignIn /> },
+      { path: "/signup", element: <SignUp /> },
+      { path: "/users", element: <Users /> },
       {
         path: "/blogs",
         element: <Blogs />,
@@ -23,8 +32,7 @@ const router = createBrowserRouter([
         // ]
       },
       { path: "/blog-details/:id", element: <BlogDetails /> },
-
-    ]
+    ],
   },
 ]);
 
@@ -39,5 +47,5 @@ export default function RoutesWrapper() {
     //     </Route>
     //   </Route>
     // </Routes>
-  )
+  );
 }

@@ -8,6 +8,11 @@
     // updating
     // unmounting
 // form & error handling
+    // CRUD
+        // C - Create
+        // R - Read
+        // U - Update
+        // D - Delete
 // Hooks
     // rules of hooks
         - must be start with 'use' keyword
