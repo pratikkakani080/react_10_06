@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getItem } from "../../utils/storage";
+import { getItem, storeItem } from "../../utils/storage";
 import Button from "../../components/button";
 import { useNavigate, useSearchParams } from "react-router";
 
@@ -7,12 +7,20 @@ function Users() {
   const navigate = useNavigate();
   const [users, setUsers] = useState(getItem("users"));
 
-  
-
   useEffect(() => {
     const storedUsers = getItem("users");
     setUsers(storedUsers);
   }, []);
+
+  const handleDelete = (id) => {
+    const ans = confirm("are you really want to delete this user?");
+    if (ans) {
+      const storedUsers = getItem("users");
+      const filteredUsers = storedUsers.filter((el) => el.id !== id);
+      storeItem("users", filteredUsers);
+      setUsers(filteredUsers)
+    }
+  };
 
   return (
     <div>
@@ -39,6 +47,12 @@ function Users() {
                   buttonClick={() => {
                     navigate("/signup?id=" + el.id);
                   }}
+                ></Button>
+              </td>
+              <td>
+                <Button
+                  buttonText={"Delete"}
+                  buttonClick={() => handleDelete(el.id)}
                 ></Button>
               </td>
             </tr>

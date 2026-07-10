@@ -12,7 +12,7 @@ function SignUp() {
   const id = searchParams.get("id");
 
   useEffect(() => {
-    const stoerdUsers = getItem("users");
+    const stoerdUsers = getItem("users") || [];
     const editedUser = stoerdUsers.find((el) => el.id === id);
     setUserInfo(editedUser);
   }, []);
@@ -112,7 +112,7 @@ function SignUp() {
         )}
       </label>
       <input
-        type="confirmPassword"
+        type="password"
         id="confirmPassword"
         name="confirmPassword"
         value={userInfo?.confirmPassword}

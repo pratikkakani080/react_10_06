@@ -25,9 +25,10 @@
   // useEffect
   // useContext
   // useRef
+  // react.memo
   // useMemo
   // useCallback
   // useReducer
 // Redux
 // GraphQL
-// Testing
+// Testing - test cases
