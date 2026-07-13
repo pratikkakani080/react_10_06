@@ -14,6 +14,7 @@ import Login from "../modules/login";
 import SignIn from "../modules/signin";
 import SignUp from "../modules/signup";
 import Users from "../modules/users";
+import Products from "../modules/products";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "/signin", element: <SignIn /> },
       { path: "/signup", element: <SignUp /> },
       { path: "/users", element: <Users /> },
+      { path: "/products", element: <Products /> },
       {
         path: "/blogs",
         element: <Blogs />,
