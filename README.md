@@ -2,6 +2,9 @@
 // Folder structure
 // Gobal & Local Variable
 // Props
+    // state uplifting - to pass data from children to parent
+    // callback function
+    // prop drilling
 // Routing
 // Life cycle of a component
     // mounting

@@ -15,6 +15,7 @@ import SignIn from "../modules/signin";
 import SignUp from "../modules/signup";
 import Users from "../modules/users";
 import Products from "../modules/products";
+import Global from "../modules/global";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: "/signup", element: <SignUp /> },
       { path: "/users", element: <Users /> },
       { path: "/products", element: <Products /> },
+      { path: "/global", element: <Global /> },
       {
         path: "/blogs",
         element: <Blogs />,

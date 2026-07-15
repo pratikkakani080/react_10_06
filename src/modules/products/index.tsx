@@ -18,7 +18,7 @@ export default function Products() {
       let res = await instance.get("/todos");
       console.log(res);
 
-      setProducts(res.data);
+      setProducts(res);
       setLoading(false);
     };
 
