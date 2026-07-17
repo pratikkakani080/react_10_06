@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getItem, storeItem } from "../../utils/storage";
 import Button from "../../components/button";
 import { useNavigate, useSearchParams } from "react-router";
+import MyContext from "../../configs/myContext";
 
 function Users() {
+  const { testData } = useContext(MyContext);
   const navigate = useNavigate();
   const [users, setUsers] = useState(getItem("users"));
 
@@ -18,12 +20,13 @@ function Users() {
       const storedUsers = getItem("users");
       const filteredUsers = storedUsers.filter((el) => el.id !== id);
       storeItem("users", filteredUsers);
-      setUsers(filteredUsers)
+      setUsers(filteredUsers);
     }
   };
 
   return (
     <div>
+      {testData}
       <Button
         buttonText={"Back"}
         buttonClick={() => navigate("/signup")}

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "../../components/button";
 import { getItem, storeItem } from "../../utils/storage";
 import { useNavigate, useSearchParams } from "react-router";
 import { v4 as uuidv4 } from "uuid";
+import MyContext from "../../configs/myContext";
 
 function SignUp() {
   let navigate = useNavigate();
+  const { setTestData } = useContext(MyContext)
   const [userInfo, setUserInfo] = useState({});
   const [errors, setErrors] = useState({});
   const [searchParams] = useSearchParams();
@@ -60,6 +62,7 @@ function SignUp() {
       }
       storeItem("users", newData);
       navigate("/users");
+      setTestData('this is from register')
     }
   };
 
