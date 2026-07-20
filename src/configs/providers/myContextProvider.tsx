@@ -5,8 +5,8 @@ export default function MyContextProvider(props) {
   console.log("🚀 ~ MyContextProvider ~ props:", props)
   const [testData, setTestData] = useState("");
   return (
-    <MyContext.Provider value={{ testData, setTestData }}>
       // object short hand
+    <MyContext.Provider value={{ testData, setTestData }}>
       {props.children}
     </MyContext.Provider>
   );

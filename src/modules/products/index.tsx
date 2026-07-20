@@ -10,6 +10,9 @@ import instance from "../../lib/api";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [productsForFilter, setProductsForFilter] = useState([]);
+  const [searchStr, setSearchStr] = useState("");
+  console.log("🚀 ~ Products ~ products:", products);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -19,6 +22,7 @@ export default function Products() {
       console.log(res);
 
       setProducts(res);
+      setProductsForFilter(res);
       setLoading(false);
     };
 
@@ -59,8 +63,33 @@ export default function Products() {
     instance.delete("/todos/3");
   };
 
+  const handleSearch = () => {
+    const filteredProducts = productsForFilter.filter((el) =>
+      el.title.includes(searchStr),
+    );
+    setProducts(filteredProducts);
+  };
+
+  const handleClearFilter = () => {
+    setSearchStr('')
+    setProducts(productsForFilter)
+  }
+
+  // setTimeout(() => {
+  //   console.log('this is running after 5sec');
+    
+  // }, 5000);
+  
+  // setInterval(() => {
+  //   console.log('this is running every 2sec');
+    
+  // }, 2000);
+
   return (
     <div>
+      <input type="search" value={searchStr} onChange={(e) => setSearchStr(e.target.value)} />
+      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleClearFilter}>Clear filters</button>
       <button onClick={handleCreateProduct}>Create product</button>
       <button onClick={handleUpdateProduct}>Update product</button>
       <button onClick={handleDeleteProduct}>Delete product</button>
