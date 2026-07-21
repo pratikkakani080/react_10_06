@@ -31,9 +31,9 @@
   // useEffect
   // useContext
   // useRef
-  // react.memo
-  // useMemo
-  // useCallback
+  // react.memo  // component cache
+  // useMemo    // value cache
+  // useCallback   // function cache
   // useReducer
 // Redux
 // GraphQL

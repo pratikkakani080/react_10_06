@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 export default function About() {
+  const ref = useRef(null);
+  const dataRef = useRef("");
+  const [dataState, setDataState] = useState('')
+  console.log("🚀 ~ About ~ ref:", ref);
   return (
     <div>
-      About
+      <p ref={ref}>About</p>
+      <button
+        onClick={() => {
+          ref.current.style.backgroundColor = "red";
+          ref.current.style.color = "white";
+          console.log("🚀 ~ About ~ ref:", ref);
+          console.log("🚀 ~ About ~ ref:", dataRef);
+        }}
+      >
+        CLick me
+      </button>
       <div
         onClick={(event) => {
           console.log("event =====> ", event);
@@ -12,10 +26,14 @@ export default function About() {
         test
       </div>
       <input
+        type="text"
         onChange={(e) => {
-          console.log(e.target.value);
+          dataRef.current = e.target.value;
+          setDataState(e.target.value)
+          // console.log(e.target.value);
         }}
       ></input>
+      data ref: {dataState || dataRef.current}
       <legend>Select your favorite language:</legend>
       <div>
         <input

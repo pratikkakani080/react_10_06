@@ -16,6 +16,7 @@ import SignUp from "../modules/signup";
 import Users from "../modules/users";
 import Products from "../modules/products";
 import Global from "../modules/global";
+import Cacheing from "../modules/cacheing";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "/users", element: <Users /> },
       { path: "/products", element: <Products /> },
       { path: "/global", element: <Global /> },
+      { path: "/cacheing", element: <Cacheing /> },
       {
         path: "/blogs",
         element: <Blogs />,
