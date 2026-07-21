@@ -38,3 +38,12 @@
 // Redux
 // GraphQL
 // Testing - test cases
+
+
+
+// Homework - website
+    // Portfolio
+    // e commerce
+    // calculator
+    // to do list
+    // canban board
