@@ -65,7 +65,7 @@ export default function Products() {
 
   const handleSearch = () => {
     const filteredProducts = productsForFilter.filter((el) =>
-      el.title.includes(searchStr),
+      el.title.toLowerCase().includes(searchStr.toLowerCase()),
     );
     setProducts(filteredProducts);
   };

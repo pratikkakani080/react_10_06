@@ -1,10 +1,27 @@
 import React, { useRef, useState } from "react";
+import client from "../../configs/apolloClient";
+import { gql } from "@apollo/client";
 
 export default function About() {
   const ref = useRef(null);
   const dataRef = useRef("");
-  const [dataState, setDataState] = useState('')
+  const [dataState, setDataState] = useState("");
   console.log("🚀 ~ About ~ ref:", ref);
+
+  client
+  .query({
+    query: gql`
+      query GetLocations {
+        locations {
+          id
+          name
+          photo
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result));
+
   return (
     <div>
       <p ref={ref}>About</p>
@@ -29,7 +46,7 @@ export default function About() {
         type="text"
         onChange={(e) => {
           dataRef.current = e.target.value;
-          setDataState(e.target.value)
+          setDataState(e.target.value);
           // console.log(e.target.value);
         }}
       ></input>
@@ -65,6 +82,16 @@ export default function About() {
         ></input>
         <label htmlFor="javascript">JavaScript</label>
       </div>
+      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+      <label htmlFor="vehicle1"> I have a bike </label>
+      <br />
+      <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
+      <label htmlFor="vehicle2"> I have a car </label>
+      <br />
+      <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
+      <label htmlFor="vehicle3"> I have a boat </label>
+      <br />
+      <button type="submit">Submit</button>
     </div>
   );
 }
