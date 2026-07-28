@@ -3,7 +3,7 @@ import { HttpLink } from "@apollo/client";
 import { ApolloClient } from "@apollo/client";
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: "https://flyby-router-demo.herokuapp.com/" }),
+  link: new HttpLink({ uri: "https://rickandmortyapi.com/graphql" }),
   cache: new InMemoryCache(),
 });
 

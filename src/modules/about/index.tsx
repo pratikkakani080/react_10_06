@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import client from "../../configs/apolloClient";
 import { gql } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
+import { GET_CHARACTERS } from "../../configs/queries";
 
 export default function About() {
   const ref = useRef(null);
@@ -8,19 +10,33 @@ export default function About() {
   const [dataState, setDataState] = useState("");
   console.log("🚀 ~ About ~ ref:", ref);
 
-  client
-  .query({
-    query: gql`
-      query GetLocations {
-        locations {
-          id
-          name
-          photo
-        }
-      }
-    `,
-  })
-  .then((result) => console.log(result));
+  const { loading, error, data } = useQuery(GET_CHARACTERS);
+
+  if (loading) {
+    return "loading....";
+  }
+
+  if (error) {
+    return "error occured...";
+  }
+
+  if (data) {
+    console.log(data);
+  }
+
+  // client
+  // .query({
+  //   query: gql`
+  //     query GetLocations {
+  //       locations {
+  //         id
+  //         name
+  //         photo
+  //       }
+  //     }
+  //   `,
+  // })
+  // .then((result) => console.log(result));
 
   return (
     <div>

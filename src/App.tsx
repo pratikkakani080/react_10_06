@@ -7,6 +7,8 @@ import RoutesWrapper from "./components/routes";
 import MyContext from "./configs/myContext";
 import { useState } from "react";
 import MyContextProvider from "./configs/providers/myContextProvider";
+import { ApolloProvider } from "@apollo/client/react";
+import client from "./configs/apolloClient";
 
 const buttons = [
   { bgColor: "red", buttonText: "Red" },
@@ -21,10 +23,12 @@ const buttons = [
 function App() {
   return (
     <>
-      <MyContextProvider>
-        <RoutesWrapper />
-        <ToastContainer position="top-center" theme="colored" />
-      </MyContextProvider>
+      <ApolloProvider client={client}>
+        <MyContextProvider>
+          <RoutesWrapper />
+          <ToastContainer position="top-center" theme="colored" />
+        </MyContextProvider>
+      </ApolloProvider>
       {/* {buttons.map((el: any) => (
         <Button bgColor={el.bgColor} buttonText={el.buttonText} />
       ))} */}
