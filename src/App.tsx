@@ -9,6 +9,8 @@ import { useState } from "react";
 import MyContextProvider from "./configs/providers/myContextProvider";
 import { ApolloProvider } from "@apollo/client/react";
 import client from "./configs/apolloClient";
+import { Provider } from "react-redux";
+import { store } from "./configs/redux/store";
 
 const buttons = [
   { bgColor: "red", buttonText: "Red" },
@@ -23,12 +25,14 @@ const buttons = [
 function App() {
   return (
     <>
-      <ApolloProvider client={client}>
-        <MyContextProvider>
-          <RoutesWrapper />
-          <ToastContainer position="top-center" theme="colored" />
-        </MyContextProvider>
-      </ApolloProvider>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <MyContextProvider>
+            <RoutesWrapper />
+            <ToastContainer position="top-center" theme="colored" />
+          </MyContextProvider>
+        </ApolloProvider>
+      </Provider>
       {/* {buttons.map((el: any) => (
         <Button bgColor={el.bgColor} buttonText={el.buttonText} />
       ))} */}
