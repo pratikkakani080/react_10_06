@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../configs/redux/store";
 import {
@@ -7,11 +7,17 @@ import {
   incrementByAmount,
   updateText,
 } from "../../configs/redux/reducers/mySlice";
+import { fetchTodos } from "../../configs/redux/actions";
 
 export function ReduxComp() {
   const count = useSelector((state: RootState) => state.counter?.value);
   const text = useSelector((state: RootState) => state.counter.text);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos())
+  }, [])
+  
 
   return (
     <div>

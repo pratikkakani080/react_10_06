@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { fetchTodos } from '../actions'
 
 export interface CounterState {
   value: number
   text: string
+  todos: any
 }
 
 const initialState: CounterState = {
   value: 10,
-  text: ''
+  text: '',
+  todos: []
 }
 
 export const counterSlice = createSlice({
@@ -33,6 +36,18 @@ export const counterSlice = createSlice({
       state.value += action.payload
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchTodos.pending, (state, action) => {
+      console.log('pending', state, action);
+    })
+    builder.addCase(fetchTodos.fulfilled, (state, action) => {
+      console.log('fulfill', state, action);
+      state.todos = action.payload
+    })
+    builder.addCase(fetchTodos.rejected, (state, action) => {
+      console.log('reject', state, action);
+    })
+  }
 })
 
 // Action creators are generated for each case reducer function
