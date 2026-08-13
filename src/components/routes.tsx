@@ -18,6 +18,7 @@ import Products from "../modules/products";
 import Global from "../modules/global";
 import Cacheing from "../modules/cacheing";
 import { ReduxComp } from "../modules/reduxComp";
+import Counter from "../modules/useReducer";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: "/global", element: <Global /> },
       { path: "/cacheing", element: <Cacheing /> },
       { path: "/redux", element: <ReduxComp /> },
+      { path: "/useReducer", element: <Counter /> },
       {
         path: "/blogs",
         element: <Blogs />,
