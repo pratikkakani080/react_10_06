@@ -26,7 +26,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/about", element: <About /> },
-      { path: "/login", element: <Login /> },
       { path: "/signin", element: <SignIn /> },
       { path: "/signup", element: <SignUp /> },
       { path: "/users", element: <Users /> },
@@ -44,6 +43,7 @@ const router = createBrowserRouter([
       { path: "/blog-details/:id", element: <BlogDetails /> },
     ],
   },
+  { path: "/login", element: <Login /> },
 ]);
 
 export default function RoutesWrapper() {
