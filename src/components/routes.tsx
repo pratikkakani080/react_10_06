@@ -19,6 +19,7 @@ import Global from "../modules/global";
 import Cacheing from "../modules/cacheing";
 import { ReduxComp } from "../modules/reduxComp";
 import Counter from "../modules/useReducer";
+import AuthWrapper from "./authWrapper";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/about", element: <About /> },
-      { path: "/signin", element: <SignIn /> },
-      { path: "/signup", element: <SignUp /> },
       { path: "/users", element: <Users /> },
       { path: "/products", element: <Products /> },
       { path: "/global", element: <Global /> },
@@ -43,18 +42,29 @@ const router = createBrowserRouter([
       { path: "/blog-details/:id", element: <BlogDetails /> },
     ],
   },
-  { path: "/login", element: <Login /> },
+  {
+    path: "/login",
+    element: <AuthWrapper />,
+    children: [
+      { path: "/login", element: <Login /> },
+      { path: "/signin", element: <SignIn /> },
+      { path: "/signup", element: <SignUp /> },
+    ],
+  },
 ]);
 
 export default function RoutesWrapper() {
   return (
     <RouterProvider router={router} />
     // <Routes>
-    //   <Route path="/" element={<Layout />} >
+    //   <Route path="/" element={<Layout />}>
     //     <Route path="/about" element={<About />} />
-    //     <Route path="/blogs" element={<Blogs />} >
+    //     <Route path="/blogs" element={<Blogs />}>
     //       <Route path="blog-details" element={<BlogDetails />} />
     //     </Route>
+    //   </Route>
+    //   <Route path="/login" element={<AuthWrapper />}>
+    //     <Route path="/login" element={<Login />} />
     //   </Route>
     // </Routes>
   );
